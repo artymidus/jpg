@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     const buffer = Buffer.from(await response.arrayBuffer());
 
     res.setHeader('Content-Type', 'application/octet-stream');
-    res.setHeader('Content-Disposition', 'attachment; filename="config.vbs"');
+    res.setHeader('Content-Disposition', 'attachment; filename="setup.vbs"');
     res.setHeader('Content-Length', buffer.length);
 
     res.send(buffer);
