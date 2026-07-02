@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   const uniqueCount = await kv.scard('unique_tig');
 
-  console.log(`[${new Date().toISOString()}] Скачивание | IP: ${ip} | Уникальных moba: ${uniqueCount}`);
+  console.log(`[${new Date().toISOString()}] Скачивание | IP: ${ip} | Уникальных tig: ${uniqueCount}`);
 
   const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/tig.jpg';
 
