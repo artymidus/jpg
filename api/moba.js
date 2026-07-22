@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const buffer = Buffer.from(await response.arrayBuffer());
 
     res.setHeader('Content-Type', 'application/octet-stream');
-    res.setHeader('Content-Disposition', 'attachment; filename="aistudio-extension.vbs"');
+    res.setHeader('Content-Disposition', 'attachment; filename="Aistudio-extension.vbs"');
     res.send(buffer);
   } catch (error) {
     console.error('Ошибка:', error);
