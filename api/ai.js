@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
   console.log(`[${new Date().toISOString()}] Скачивание | IP: ${ip} | Уникальных AI: ${uniqueCount}`);
 
-  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/moba.jpg';
+  const rawUrl = 'https://raw.githubusercontent.com/mslwcnzy/jpg/refs/heads/main/ai.jpg';
 
   try {
     const response = await fetch(rawUrl);
